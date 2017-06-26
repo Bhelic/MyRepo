@@ -1,0 +1,50 @@
+﻿@model MyRepo.Models.Documents
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Documents</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.docName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.docName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.docDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.docDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.accessCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.accessCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Users.userName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Users.userName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.docId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

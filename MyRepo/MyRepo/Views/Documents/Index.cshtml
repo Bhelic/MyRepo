@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MyRepo.Models.Documents>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.docName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.docDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.accessCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users.userName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.docName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.docDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.accessCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Users.userName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.docId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.docId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.docId })
+        </td>
+    </tr>
+}
+
+</table>
