@@ -10,7 +10,7 @@ using MyRepo.Models;
 
 namespace MyRepo.Controllers
 {
-    public class UsersController : Controller
+    public class UsersController : BaseController
     {
         private myrepoDBEntities db = new myrepoDBEntities();
 

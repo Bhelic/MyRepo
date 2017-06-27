@@ -10,7 +10,7 @@ using MyRepo.Models;
 
 namespace MyRepo.Controllers
 {
-    public class DocumentsController : Controller
+    public class DocumentsController : BaseController
     {
         private myrepoDBEntities db = new myrepoDBEntities();
 

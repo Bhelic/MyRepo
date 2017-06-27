@@ -1,0 +1,28 @@
+﻿@using MyRepo.Models
+
+@{
+    var alerts = TempData.ContainsKey(Alert.TempDataKey)
+                ? (List<Alert>)TempData[Alert.TempDataKey]
+                : new List<Alert>();
+
+    if (alerts.Any())
+    {
+        @*<hr />*@
+    }
+
+    foreach (var alert in alerts)
+    {
+        var dismissableClass = alert.Dismissable ? "alert-dismissable" : null;
+        <div id="alert1" class="alert alert-@alert.AlertStyle @dismissableClass">
+            @if (alert.Dismissable)
+            {
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong class="h4">@Html.Raw(alert.Tittle)</strong><span class="glyphicon @alert.Glyphicon h4"></span>
+                <hr class="divider">
+            }
+
+            @Html.Raw(alert.Message)
+
+        </div>
+    }
+}

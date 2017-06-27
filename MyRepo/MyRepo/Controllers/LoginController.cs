@@ -10,22 +10,18 @@ using MyRepo.Models;
 
 namespace MyRepo.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : BaseController
     {
         private myrepoDBEntities db = new myrepoDBEntities();
 
-        // GET: Users/Create
         public ActionResult Index()
         {
             return View();
         }
 
-        // POST: Users/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index([Bind(Include = "userId,userName,email,password,visitCount")] Users users)
+        public ActionResult Index([Bind(Include = "userId,password")] Users users)
         {
             var aux = db.Users.Find(users.userId);
 
@@ -33,15 +29,13 @@ namespace MyRepo.Controllers
             {
                 if (aux.password == users.password)
                 {
-                    //db.Users.Add(users);
-                    //db.SaveChanges();
+                    ViewData["user"] = aux;
                     return RedirectToAction("Create","Documents");
                 }
 
             }
-
-            return HttpNotFound();
-            //return View(users);
+            ModelState.AddModelError("", "ID de usuario o contraseña incorrectos.");
+            return View();
         }
 
         // POST: Users/Delete/5
